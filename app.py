@@ -1,15 +1,21 @@
-<<<<<<< HEAD
 from flask import Flask, render_template
-from models import Artist, Album, Song, Book, Movie, db
+from models import db, Student, Artist, Album, Song, Book, Movie
+from flask_migrate import Migrate
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///personal_preferences.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
+migrate = Migrate(app, db)
 
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/students')
+def students():
+    students_list = Student.query.all()
+    return render_template('students.html', students=students_list)
 
 @app.route('/songs')
 def songs():
@@ -27,9 +33,34 @@ def movies():
     return render_template('movies.html', movies=movies_list)
 
 
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
+
+        if not Student.query.first():
+            student1 = Student(
+                name="Иванов Иван",
+                gender="Мужской",
+                age=20,
+                hair_color="Тёмный",
+                eye_color="Карий",
+                hobby="Программирование",
+                favorite_subject="Математика"
+            )
+
+            student2 = Student(
+                name="Петрова Анна",
+                gender="Женский",
+                age=19,
+                hair_color="Блонд",
+                eye_color="Голубой",
+                hobby="Рисование",
+                favorite_subject="Литература"
+            )
+
+            db.session.add_all([student1, student2])
+            db.session.commit()
 
         # Добавляем музыкальных исполнителей
         artist1 = Artist(name='Radiohead')
@@ -71,14 +102,4 @@ if __name__ == '__main__':
         ])
         db.session.commit()
 
-=======
-from flask import Flask
-app = Flask(__name__)
-
-@app.route('/')
-def hello():
-    return "Carpe diem - лови момент!"
-
-if __name__ == '__main__':
-    app.run(debug=True)
->>>>>>> e80247903561febfd283598e9635917951c1700b
+        app.run(debug=True)

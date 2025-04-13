@@ -2,6 +2,16 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
+class Student(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    gender = db.Column(db.String(20))
+    age = db.Column(db.Integer)
+    hair_color = db.Column(db.String(30))
+    eye_color = db.Column(db.String(30))
+    hobby = db.Column(db.String(100))
+    favorite_subject = db.Column(db.String(50))
+
 class Artist(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
@@ -34,3 +44,4 @@ class Movie(db.Model):
     director = db.Column(db.String(100), nullable=False)
     year = db.Column(db.Integer)
     genre = db.Column(db.String(50))
+

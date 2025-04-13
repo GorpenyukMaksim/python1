@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Список группы{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">Список нашей группы</h1>
+
+    <div class="row">
+        {% for student in students %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0">{{ student.name }}</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Пол:</strong> {{ student.gender }}</li>
+                        <li class="list-group-item"><strong>Возраст:</strong> {{ student.age }}</li>
+                        <li class="list-group-item"><strong>Цвет волос:</strong> {{ student.hair_color }}</li>
+                        <li class="list-group-item"><strong>Цвет глаз:</strong> {{ student.eye_color }}</li>
+                        <li class="list-group-item"><strong>Хобби:</strong> {{ student.hobby }}</li>
+                        <li class="list-group-item"><strong>Любимый предмет:</strong> {{ student.favorite_subject }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
