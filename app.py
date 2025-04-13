@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from flask import Flask, render_template
 from models import Artist, Album, Song, Book, Movie, db
 
@@ -70,3 +71,14 @@ if __name__ == '__main__':
         ])
         db.session.commit()
 
+=======
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+    return "Carpe diem - лови момент!"
+
+if __name__ == '__main__':
+    app.run(debug=True)
+>>>>>>> e80247903561febfd283598e9635917951c1700b
