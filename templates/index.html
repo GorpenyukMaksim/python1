@@ -1,12 +1,61 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Rezume</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Максим Александрович</h1>
+        <p>Frontend-разработчик (HTML, CSS)</p>
 
-{% block title %}Home{% endblock %}
+        <div class="contact-info">
+            <h2>Контактная информация</h2>
+            <p>Email: maxon7591@mail.ru</p>
+            <p>Телефон: +7-914-667-84-25</p>
+        </div>
 
-{% block content %}
-    <h1>Welcome to the Home Page</h1>
-    {% if current_user.is_authenticated %}
-        <p>Hello, {{ current_user.username }}!</p>
-    {% else %}
-        <p>Please login or register to access your profile.</p>
-    {% endif %}
-{% endblock %}
+        <div class="skills">
+            <h2>Навыки</h2>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Адаптивная верстка</li>
+                <li>Базовые знания JavaScript</li>
+                <li>Работа с Git</li>
+            </ul>
+        </div>
+
+        <div class="experience">
+            <h2>Опыт работы</h2>
+            <ul>
+                <li>
+                    <strong>Веб-разработчик</strong><br>
+                    Компания "Vin" (июнь 2020 — декабрь 2020)<br>
+                    - Верстка сайтов по макетам<br>
+                    - Оптимизация кода для повышения производительности<br>
+                    - Создание адаптивных интерфейсов
+                </li>
+                <li>
+                    <strong>Стажер</strong><br>
+                    Компания "Diesel" (январь 2021 — настоящее время)<br>
+                    - Поддержка и доработка существующих проектов<br>
+                    - Изучение современных технологий верстки
+                </li>
+            </ul>
+        </div>
+
+        <div class="education">
+            <h2>Образование</h2>
+            <ul>
+                <li>
+                    <strong>НЕТ!!!!!!</strong><br>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
